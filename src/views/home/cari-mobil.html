@@ -13,10 +13,18 @@
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="./public/assets/src/css/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
       * {
         font-family: 'Open Sans', sans-serif;
+      }
+      .swiper-pagination {
+        position: relative !important;
+        margin-top: 25px !important;
       }
     </style>
   </head>
@@ -191,7 +199,7 @@
                   >
                     <option>Pilih Tipe Driver</option>
                     <option value="1">Dengan Sopir</option>
-                    <option value="2">Tanpa Sopir</option>
+                    <option value="0">Tanpa Sopir</option>
                   </select>
                   <div
                     class="absolute inset-y-0 right-4 flex items-center justify-center pointer-events-none"
@@ -259,11 +267,14 @@
           </div>
         </div>
       </section>
-      <section id="searchResult">
-        <div
-          class="grid grid-cols-1 lg:grid-cols-3 gap-5 mx-28 lg:pt-40 py-5"
-          id="searchResultBox"
-        ></div>
+      <section id="searchResult" class="mx-10 lg:mx-32 lg:pt-40 py-5">
+        <div class="col-span-3 text-center hidden" id="searchResultBox">
+          <h2 class="text-dark text-md font-bold">Data tidak ditemukan</h2>
+        </div>
+        <div class="swiper h-full w-full">
+          <div class="swiper-wrapper"></div>
+          <div class="swiper-pagination"></div>
+        </div>
       </section>
       <footer
         class="grid grid-cols-1 lg:grid-cols-6 lg:pt-28 mb-12 gap-5 px-5 lg:px-16 pt-10"
@@ -326,12 +337,33 @@
     </main>
 
     <script src="./public/assets/vendor/jQuery/jquery-3.7.1.min.js"></script>
-    <script src="./public/assets/vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./public/assets/src/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
+        const swiper = new Swiper('.swiper', {
+          slidesPerView: 3,
+          spaceBetween: 30,
+          pagination: {
+            el: '.swiper-pagination',
+          },
+          breakpoints: {
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          },
+        });
         $('#driverType, #date, #time').change(function () {
           if (
             $('#driverType').val() !== '' &&
@@ -363,40 +395,37 @@
             )
             .then((response) => {
               const data = response.data;
-              $('#searchResultBox').html('');
+              swiper.removeAllSlides();
+              $('#searchResultBox').addClass('hidden');
               if (data.length === 0) {
-                $('#searchResultBox').append(`
-                    <div class="col-span-3 text-center">
-                        <h2 class="text-dark text-md font-bold">Data tidak ditemukan</h2>
-                    </div>
-                    `);
+                $('#searchResultBox').removeClass('hidden');
               } else {
                 data.forEach((item) => {
-                  $('#searchResultBox').append(`
-                    <div class="flex flex-col gap-5 border border-gray-300 rounded-lg p-5 shadow-sm">
-                        <img src="./public/${item.image}" alt="car1" class="w-full h-48 object-cover rounded-lg" />
-                        <div class="flex flex-col gap-4">
-                        <p class="text-dark text-sm">Tipe Mobil</p>
-                        <p class="text-dark text-md font-bold">Rp. ${item.rentPerDay}/hari</p>
-                        <p class="text-dark text-sm">
-                            ${item.description}
-                        </p>
-                        <div class="flex gap-3">
-                            <img src="./public/images/fi_users.png" alt="icon-user" />
-                            <p class="text-dark text-sm">${item.capacity} Penumpang</p>
-                        </div>
-                        <div class="flex gap-3">
-                            <img src="./public/images/fi_settings.png" alt="icon-settings" />
-                            <p class="text-dark text-sm">${item.transmission}</p>
-                        </div>
-                        <div class="flex gap-3">
-                            <img src="./public/images/fi_calendar.png" alt="icon-calendar" />
-                            <p class="text-dark text-sm">${item.year}</p>
-                        </div>
-                        </div>
-                        <a href="#" class="btn text-center">Sewa Sekarang</a>
-                    </div>
-                    `);
+                  swiper.appendSlide(`
+                      <div class="swiper-slide flex flex-col gap-5 border border-gray-300 rounded-lg p-5 shadow-sm">
+                          <img src="./public/${item.image}" alt="car1" class="w-full h-48 object-cover rounded-lg pb-5" />
+                          <div class="flex flex-col gap-4 h-[300px]">
+                              <p class="text-dark text-sm">Tipe Mobil</p>
+                              <p class="text-dark text-md font-bold">Rp. ${item.rentPerDay}/hari</p>
+                              <p class="text-dark text-sm overflow-auto">
+                                  ${item.description}
+                              </p>
+                              <div class="flex gap-3">
+                                  <img src="./public/images/fi_users.png" alt="icon-user" />
+                                  <p class="text-dark text-sm">${item.capacity} Penumpang</p>
+                              </div>
+                              <div class="flex gap-3">
+                                  <img src="./public/images/fi_settings.png" alt="icon-settings" />
+                                  <p class="text-dark text-sm">${item.transmission}</p>
+                              </div>
+                              <div class="flex gap-3">
+                                  <img src="./public/images/fi_calendar.png" alt="icon-calendar" />
+                                  <p class="text-dark text-sm">${item.year}</p>
+                              </div>
+                          </div>
+                          <a href="#" class="btn text-center">Sewa Sekarang</a>
+                      </div>
+                      `);
                 });
               }
             })

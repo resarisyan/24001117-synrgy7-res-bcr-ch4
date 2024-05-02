@@ -14,14 +14,17 @@ class CarController {
 
   static searchCars = async (req: any, res: any) => {
     try {
-      const { date, time, passenger } = req.params;
+      const { date, time } = req.params;
       const cars = await fs.promises.readFile('./data/cars.json', 'utf8');
       const parsedCars = JSON.parse(cars);
       const availableAt = new Date(`${date}T${time}Z`);
+      const driverType = req.params.driverType === '1' ? true : false;
+      const passenger = req.params.passenger || 1;
       const filteredCars = parsedCars.filter(
         (car: any) =>
           car.availableAt >= availableAt.toISOString() &&
-          car.capacity >= parseInt(passenger)
+          car.capacity >= parseInt(passenger) &&
+          car.driverType === driverType
       );
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(filteredCars));
