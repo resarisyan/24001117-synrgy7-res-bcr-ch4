@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .faq-item {
+    @apply p-4 lg:p-4 border-2 rounded-lg;
+  }
+  .faq-item__question {
+    @apply flex items-center justify-between w-full;
+  }
+  .faq-item__answer {
+    @apply pt-5 border-t-2 my-5 text-left;
+  }
+  .faq-item__toggle {
+    @apply cursor-pointer;
+  }
+  /* CTA */
+  .cta-banner__content {
+    @apply flex justify-center px-5 lg:px-16 items-center;
+  }
+  .cta-banner__title {
+    @apply font-bold text-white text-2xl lg:text-4xl text-center;
+  }
+  .cta-banner__text {
+    @apply text-neutral-color-1 text-center text-sm mt-5 mb-5 leading-relaxed;
+  }
+  .btn {
+    @apply bg-secondary-color-4 text-white rounded-md px-3 py-2 text-sm font-medium;
+  }
+}

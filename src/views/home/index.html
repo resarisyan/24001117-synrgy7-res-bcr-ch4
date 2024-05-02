@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FSW Challenge</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="./public/assets/vendor/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./public/assets/vendor/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
+    />
+    <link href="./public/assets/src/css/output.css" rel="stylesheet" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+      * {
+        font-family: 'Open Sans', sans-serif;
+      }
+      .owl-carousel .owl-item img {
+        width: 64px !important;
+        height: 64px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="spinner"
+      class="fixed inset-0 flex justify-center items-center bg-white"
+    >
+      <div
+        class="w-16 h-16 border-8 border-dashed rounded-full animate-spin border-blue-600"
+      ></div>
+    </div>
+    <main class="scroll-smooth">
+      <header>
+        <nav class="bg-primary-color-0 fixed w-full z-10">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between h-16">
+              <div class="flex items-center sm:items-stretch sm:justify-start">
+                <div class="flex flex-shrink-0 items-center">
+                  <img
+                    class="h-8 w-28"
+                    src="./public/images/logo.png"
+                    alt="logo-header"
+                  />
+                </div>
+              </div>
+              <div
+                class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+              >
+                <div class="hidden sm:ml-6 sm:block">
+                  <div class="flex space-x-4">
+                    <a
+                      href="#our-service"
+                      class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+                      >Our Service</a
+                    >
+                    <a
+                      href="#why-us"
+                      class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+                      >Why Us</a
+                    >
+                    <a
+                      href="#testimony"
+                      class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+                      >Testimonial</a
+                    >
+                    <a
+                      href="#faq"
+                      class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+                      >Faq</a
+                    >
+                    <a href="#" class="btn">Register</a>
+                  </div>
+                </div>
+              </div>
+              <div class="sm:hidden flex items-center">
+                <button
+                  type="button"
+                  class="btn-nav relative inline-flex items-center justify-center rounded-md p-2 text-[#222222] hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                  aria-expanded="false"
+                >
+                  <span class="absolute -inset-0.5"></span>
+                  <span class="sr-only">Open main menu</span>
+                  <i class="fas fa-bars"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="sm:hidden fixed inset-0 items-start justify-end z-40"
+            id="mobile-menu"
+            style="display: none"
+          >
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+
+            <div
+              class="bg-white w-64 h-full transform ease-in-out duration-300 absolute right-0 py-2 px-4"
+            >
+              <div class="flex justify-between mb-2">
+                <img
+                  class="h-8 w-28"
+                  src="./public/images/logo.png"
+                  alt="logo-navbar"
+                />
+                <button
+                  type="button"
+                  class="btn-nav relative inline-flex items-center justify-center rounded-md p-2 text-[#222222] hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                  aria-controls="mobile-menu"
+                  aria-expanded="false"
+                >
+                  <span class="sr-only">Close main menu</span>
+                  <div class="flex-shrink-0 flex items-center"></div>
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="flex-1 flex flex-col justify-between">
+                <div class="space-y-1">
+                  <a
+                    href="#our-service"
+                    class="nav-link block rounded-md px-3 py-2 text-base font-medium"
+                    aria-current="page"
+                    >Our Service</a
+                  >
+                  <a
+                    href="#why-us"
+                    class="nav-link block rounded-md px-3 py-2 text-base font-medium"
+                    >Why Us</a
+                  >
+                  <a
+                    href="#testimony"
+                    class="nav-link block rounded-md px-3 py-2 text-base font-medium"
+                    >Testimonial</a
+                  >
+                  <a
+                    href="#faq"
+                    class="nav-link block rounded-md px-3 py-2 text-base font-medium"
+                    >Faq</a
+                  >
+                  <a href="#" class="block btn">Register</a>
+                </div>
+              </div>
+            </div>
+            <div class="sm:hidden flex-shrink-0 w-14" aria-hidden="true"></div>
+          </div>
+        </nav>
+      </header>
+      <section id="home" class="bg-primary-color-0 mx-auto pt-24">
+        <div class="flex flex-wrap justify-evenly">
+          <div
+            class="w-full self-center px-6 sm:px-16 lg:px-24 md:py-16 lg:w-1/2"
+          >
+            <h1 class="font-bold text-dark text-2xl lg:text-4xl">
+              Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)
+            </h1>
+            <p class="text-dark mt-5 mb-5 leading-relaxed">
+              Selamat datang di Binar Car Rental. Kami menyediakan mobil
+              kualitas terbaik dengan harga terjangkau. Selalu siap melayani
+              kebutuhanmu untuk sewa mobil selama 24 jam.
+            </p>
+            <a href="http://localhost:3000/cari" class="inline-block btn"
+              >Sewa Sekarang</a
+            >
+          </div>
+          <div
+            class="w-full lg:w-1/2 order-1 lg:order-2 flex justify-end items-end"
+            data-aos="zoom-out"
+          >
+            <img
+              src="./public/images/img_car.png"
+              alt=""
+              class="w-full lg:h-full object-cover lg:object-contain"
+            />
+          </div>
+        </div>
+      </section>
+      <section id="our-service" class="mt-32">
+        <div class="flex flex-wrap justify-center px-5 lg:px-16 gap-3">
+          <div data-aos="zoom-out">
+            <img
+              src="./public/images/img_service.png"
+              alt=""
+              class="w-[90%] lg:w-[100%] object-cover"
+            />
+          </div>
+          <div
+            class="w-full self-center px-6 sm:px-16 lg:px-24 md:py-16 lg:w-1/2"
+          >
+            <h2 class="font-bold text-dark text-xl lg:text-2xl">
+              Best Car Rental for any kind of trip in (Lokasimu)!
+            </h2>
+            <p class="text-dark text-sm mt-5 mb-5 leading-relaxed">
+              Sewa mobil di (Lokasimu) bersama Binar Car Rental jaminan harga
+              lebih murah dibandingkan yang lain, kondisi mobil baru, serta
+              kualitas pelayanan terbaik untuk perjalanan wisata, bisnis,
+              wedding, meeting, dll.
+            </p>
+            <ul class="list-none text-sm font-light">
+              <li class="flex items-center mt-5 mb-5 leading-relaxed">
+                <span class="w-6 bg-primary-color-1 rounded-full text-center">
+                  <i class="fas fa-check text-primary-color-4"></i>
+                </span>
+                <span class="pl-3">Sewa Mobil Dengan Supir di Bali 12 Jam</span>
+              </li>
+              <li class="flex items-center mt-5 mb-5 leading-relaxed">
+                <span class="w-6 bg-primary-color-1 rounded-full text-center">
+                  <i class="fas fa-check text-primary-color-4"></i>
+                </span>
+                <span class="pl-3">Sewa Mobil Lepas Kunci di Bali 24 Jam</span>
+              </li>
+              <li class="flex items-center mt-5 mb-5 leading-relaxed">
+                <span class="w-6 bg-primary-color-1 rounded-full text-center">
+                  <i class="fas fa-check text-primary-color-4"></i>
+                </span>
+                <span class="pl-3">Sewa Mobil Jangka Panjang Bulanan</span>
+              </li>
+              <li class="flex items-center mt-5 mb-5 leading-relaxed">
+                <span class="w-6 bg-primary-color-1 rounded-full text-center">
+                  <i class="fas fa-check text-primary-color-4"></i>
+                </span>
+                <span class="pl-3">Gratis Antar - Jemput Mobil di Bandara</span>
+              </li>
+              <li class="flex items-center mt-5 mb-5 leading-relaxed">
+                <span class="w-6 bg-primary-color-1 rounded-full text-center">
+                  <i class="fas fa-check text-primary-color-4"></i>
+                </span>
+                <span class="pl-3">Layanan Airport Transfer / Drop In Out</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="why-us" class="mt-14">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-7 px-5 lg:px-16">
+          <h2
+            class="font-bold text-dark text-xl lg:text-2xl text-center lg:text-start col-span-full"
+          >
+            Why Us?
+          </h2>
+          <p
+            class="text-dark text-sm leading-relaxed text-center lg:text-start col-span-full"
+          >
+            Mengapa harus pilih Binar Car Rental?
+          </p>
+          <div
+            class="bg-gray-100 p-6 border border-gray-200"
+            data-aos="zoom-out"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-alert-warning-color flex justify-center items-center"
+            >
+              <i class="fas fa-thumbs-up text-white text-xl"></i>
+            </div>
+            <h3 class="text-dark text-2xl mt-5 mb-5 font-bold">
+              Mobile Lengkap
+            </h3>
+            <p class="text-dark text-sm mt-5 mb-5 leading-relaxed">
+              Tersedia banyak pilihan mobil, kondisi masih baru, bersih dan
+              terawat.
+            </p>
+          </div>
+          <div
+            class="bg-gray-100 p-6 border border-gray-200"
+            data-aos="zoom-out"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-alert-danger-color flex justify-center items-center"
+            >
+              <i class="fas fa-tags text-white text-xl"></i>
+            </div>
+            <h3 class="text-dark text-2xl mt-5 mb-5 font-bold">Harga Murah</h3>
+            <p class="text-dark text-sm mt-5 mb-5 leading-relaxed">
+              Harga murah dan bersaing, bisa bandingkan harga kami dengan rental
+              mobil lain
+            </p>
+          </div>
+          <div
+            class="bg-gray-100 p-6 border border-gray-200"
+            data-aos="zoom-out"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-primary-color-5 flex justify-center items-center"
+            >
+              <i class="fas fa-clock text-white text-xl"></i>
+            </div>
+            <h3 class="text-dark text-2xl mt-5 mb-5 font-bold">
+              Layanan 24 Jam
+            </h3>
+            <p class="text-dark text-sm mt-5 mb-5 leading-relaxed">
+              Siap melayani kebutuhan Anda selama 24 jam nonstop. Kami juga
+              tersedia di akhir minggu
+            </p>
+          </div>
+          <div
+            class="bg-gray-100 p-6 border border-gray-200"
+            data-aos="zoom-out"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-secondary-color-5 flex justify-center items-center"
+            >
+              <i class="fas fa-award text-white text-xl"></i>
+            </div>
+            <h3 class="text-dark text-2xl mt-5 mb-5 font-bold">
+              Sopir Profesional
+            </h3>
+            <p class="text-dark text-sm mt-5 mb-5 leading-relaxed">
+              Sopir yang profesional, berpengalaman, jujur, ramah dan selalu
+              tepat waktu
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="testimony" class="mt-32">
+        <div class="flex flex-wrap justify-start">
+          <h2
+            class="w-full font-bold text-dark text-xl lg:text-2xl text-center"
+          >
+            Testimonial
+          </h2>
+          <p
+            class="w-full text-dark text-sm mt-5 mb-5 leading-relaxed text-center"
+          >
+            Berbagai review positif dari para pelanggan kami
+          </p>
+          <div class="w-full flex flex-wrap gap-8" data-aos="zoom-in">
+            <div class="owl-carousel">
+              <div
+                class="flex max-w-[300px] lg:max-w-[600px] bg-neutral-color-2 p-6 rounded py-10 lg:py-20"
+              >
+                <div
+                  class="flex flex-col lg:flex-row gap-5 justify-center items-center"
+                >
+                  <img
+                    src="./public/images/person-1.png"
+                    alt=""
+                    class="lg:basis-1/3 w-16 h-16 rounded-full object-cover"
+                  />
+                  <div class="flex flex-col justify-center">
+                    <div class="star">
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                    </div>
+                    <p class="text-dark text-sm leading-relaxed">
+                      Saya sangat puas dengan layanan Binar Car Rental. Mobil
+                      yang saya sewa sangat nyaman dan bersih. Sopirnya juga
+                      sangat ramah dan profesional. Harga yang ditawarkan juga
+                      sangat terjangkau. Terima kasih Binar Car Rental.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex max-w-[300px] lg:max-w-[600px] bg-neutral-color-2 p-6 rounded py-10 lg:py-20"
+              >
+                <div
+                  class="flex flex-col lg:flex-row gap-5 justify-center items-center"
+                >
+                  <img
+                    src="./public/images/person-2.png"
+                    class="lg:basis-1/3 w-16 h-16 rounded-full object-cover"
+                  />
+                  <div class="flex flex-col justify-center">
+                    <div class="star">
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                      <i class="fas fa-star text-alert-warning-color"></i>
+                    </div>
+                    <p class="text-dark text-sm leading-relaxed">
+                      Saya sangat puas dengan layanan Binar Car Rental. Mobil
+                      yang saya sewa sangat nyaman dan bersih. Sopirnya juga
+                      sangat ramah dan profesional. Harga yang ditawarkan juga
+                      sangat terjangkau. Terima kasih Binar Car Rental.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-center w-full items-center">
+              <div class="flex gap-5">
+                <button
+                  class="prev-btn hover:bg-secondary-color-4 hover:text-white rounded-full w-8 h-8 text-sm font-medium border-2"
+                >
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button
+                  class="next-btn hover:bg-secondary-color-4 hover:text-white rounded-full w-8 h-8 text-sm font-medium border-2"
+                >
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="cta-banner" class="mt-32">
+        <div class="cta-banner__content">
+          <div
+            class="w-full flex flex-col items-center px-10 py-14 sm:px-16 lg:px-36 md:py-16 bg-primary-color-4"
+          >
+            <h2 class="cta-banner__title" data-aos="zoom-out">
+              Sewa Mobil di (Lokasimu) Sekarang
+            </h2>
+            <p class="cta-banner__text" data-aos="zoom-out">
+              Binar Car Rental siap melayani kebutuhan Anda sewa mobil. Tersedia
+              berbagai pilihan mobil dengan harga terjangkau. Segera sewa mobil
+              sekarang dan nikmati perjalanan Anda.
+            </p>
+            <a href="#" class="btn mt-5 inline-block" data-aos="zoom-out">
+              Mulai Sewa Mobil
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="faq" class="mt-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 px-5 lg:px-16">
+          <div class="flex flex-col lg:text-start">
+            <h2
+              class="font-bold text-dark text-xl text-center lg:text-left lg:text-2xl"
+            >
+              Frequently Asked Questions
+            </h2>
+            <p
+              class="text-dark text-sm mt-5 mb-5 leading-relaxed text-center lg:text-left"
+            >
+              Berbagai pertanyaan yang sering ditanyakan oleh pelanggan kami
+            </p>
+          </div>
+          <div class="grid grid-cols-1 gap-4" data-aos="zoom-in">
+            <div class="faq-item">
+              <button class="faq-item__question">
+                <h3 class="text-md text-left">
+                  Apa saja syarat yang dibutuhkan?
+                </h3>
+                <span class="faq-item__toggle">
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </button>
+              <div class="faq-item__answer hidden">
+                <p class="text-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__question">
+                <h3 class="text-md text-left">
+                  Berapa hari minimal sewa mobil lepas kunci?
+                </h3>
+                <span class="faq-item__toggle">
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </button>
+              <div class="faq-item__answer hidden">
+                <p class="text-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__question">
+                <h3 class="text-md text-left">
+                  Berapa hari minimal sewa mobil lepas kunci?
+                </h3>
+                <span class="faq-item__toggle">
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </button>
+              <div class="faq-item__answer hidden">
+                <p class="text-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__question">
+                <h3 class="text-md text-left">
+                  Apakah Ada biaya antar-jemput?
+                </h3>
+                <span class="faq-item__toggle">
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </button>
+              <div class="faq-item__answer hidden">
+                <p class="text-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__question">
+                <h3 class="text-md text-left">
+                  Bagaimana jika terjadi kecelakaan
+                </h3>
+                <span class="faq-item__toggle">
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </button>
+              <div class="faq-item__answer hidden">
+                <p class="text-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer
+        class="grid grid-cols-1 lg:grid-cols-6 mt-32 mb-12 gap-5 px-5 lg:px-16"
+      >
+        <div class="flex flex-col gap-3 col-span-2">
+          <p class="text-dark text-sm leading-relaxed">
+            Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000
+          </p>
+          <p class="text-dark text-sm leading-relaxed">
+            binarcarrental@gmail.com
+          </p>
+          <p class="text-dark text-sm leading-relaxed">081-233-334-808</p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <a href="#" class="text-dark text-sm leading-relaxed">Our Service</a>
+          <a href="#" class="text-dark text-sm leading-relaxed">Why Us</a>
+          <a href="#" class="text-dark text-sm leading-relaxed">Testimonial</a>
+          <a href="#" class="text-dark text-sm leading-relaxed">Faq</a>
+        </div>
+        <div class="flex flex-col gap-3 col-span-2">
+          <p class="text-dark text-sm leading-relaxed">Connect with us</p>
+          <div class="flex gap-3" data-aos="zoom-in">
+            <a
+              href="#"
+              class="w-8 h-8 rounded-full bg-primary-color-4 flex justify-center items-center"
+              ><i class="fab fa-facebook text-white"></i
+            ></a>
+            <a
+              href="#"
+              class="w-8 h-8 rounded-full bg-primary-color-4 flex justify-center items-center"
+              ><i class="fab fa-twitter text-white"></i
+            ></a>
+            <a
+              href="#"
+              class="w-8 h-8 rounded-full bg-primary-color-4 flex justify-center items-center"
+              ><i class="fab fa-instagram text-white"></i
+            ></a>
+            <a
+              href="#"
+              class="w-8 h-8 rounded-full bg-primary-color-4 flex justify-center items-center"
+              ><i class="fab fa-linkedin text-white"></i
+            ></a>
+            <a
+              href="#"
+              class="w-8 h-8 rounded-full bg-primary-color-4 flex justify-center items-center"
+              ><i class="fab fa-youtube text-white"></i
+            ></a>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <p class="text-dark text-sm leading-relaxed">Copyright Binar 2022</p>
+          <img
+            class="h-8 w-28"
+            src="./public/images/logo.png"
+            alt="logo-footer"
+            data-aos="zoom-in"
+          />
+        </div>
+      </footer>
+    </main>
+
+    <script src="./public/assets/vendor/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="./public/assets/vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./public/assets/src/js/script.js"></script>
+  </body>
+</html>
